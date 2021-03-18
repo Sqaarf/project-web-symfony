@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div id="flex-container">
+        {% for produit in produits %}
+            <div class="produit">
+                <h2>{{ produit.nom }}</h2>
+                <img src="{{ asset(produit.getImgPath()) }}" alt="" width="200px" height="200px"/>
+                <p>{{ produit.description }}</p>
+                <p>{{ produit.prix }} €</p>
+                <a href="#"> > Commander</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

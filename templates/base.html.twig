@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Pizzaria Projet Web</title>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% endblock %}
+    </head>
+
+    <body>
+        <header id="header-background">
+                <div class="navigation-bar">
+                        <div id="navigation-container">
+                            <img src="{{ asset('./image/logo-pizza.png') }}">
+
+                            <ul>
+                                <li><a href="/home">Accueil</a></li>
+                                <li><a href="#">Panier</a></li>
+                                <li><a href="#">Connexion</a></li>
+                                {% if login %}
+                                    <li><span>Bonjour Test</span></li>
+                                    <li><a href="#">Déconnexion</a></li>
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                </div>
+        </header>
+
+            <main>{% block main %}{% endblock %}</main>
+
+        <footer>
+                <p>Projet Architecture et développement web - Année 2020/2021 - SABBAH Zyad L2 </p>
+            {% if admin %}
+                <a class="admin" href="./admin.php"> > OUTILS D'ADMINISTRATIONS</a>
+            {% endif %}
+        </footer>
+    </body>
+
+
+
+
+</html>

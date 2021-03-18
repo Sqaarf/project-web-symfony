@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+
+{% block main %}
+        <div id="flex-container">
+            <div class="produit">
+                <h2>Entrées</h2>
+                <img src="{{ asset('./image/salad.jpg') }}" alt="" width="200px" height="200px">
+                <a href="/menu/1"> > Voir tout</a>
+            </div>
+
+            <div class="produit">
+                <h2>Plats</h2>
+                <img src="{{ asset('./image/pizza.jpg') }}" alt="" width="200px" height="200px">
+                <a href="/menu/2"> > Voir tout</a>
+            </div>
+        </div>
+
+        <div id="flex-container">
+            <div class="produit">
+                <h2>Desserts</h2>
+                <img src="{{ asset('./image/dessert.jpg') }}" alt="" width="200px" height="200px">
+                <a href="/menu/3"> > Voir tout</a>
+            </div>
+            <div class="produit">
+                <h2>Boissons</h2>
+                <img src="{{ asset('./image/boisson.jpg') }}" alt="" width="200px" height="200px">
+                <a href="/menu/4"> > Voir tout</a>
+            </div>
+        </div>
+{% endblock %}

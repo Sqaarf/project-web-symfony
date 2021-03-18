@@ -18,17 +18,22 @@ class Commandes
     private $id_com;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Produits")
+     * @ORM\JoinColumn(name="id_plat", referencedColumnName="id")
      */
-    private $id_plat;
+    private $id;
+
     /**
      * @ORM\Column(type="string")
      */
-    private $nom_article;
+    private $nom_plat;
+
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateurs")
+     * @ORM\JoinColumn(name="id_client", referencedColumnName="id")
      */
     private $id_client;
+
     /**
      * @ORM\Column(type="string")
      */
@@ -56,7 +61,7 @@ class Commandes
     {
         $this->id_com = $id_com;
         $this->id_plat = $id_plat;
-        $this->nom_article = $nom_article;
+        $this->nom_plat = $nom_article;
         $this->id_client = $id_client;
         $this->nom_client = $nom_client;
         $this->date = $date;
@@ -82,9 +87,9 @@ class Commandes
     /**
      * @return mixed
      */
-    public function getNomArticle()
+    public function getNomPlat()
     {
-        return $this->nom_article;
+        return $this->nom_plat;
     }
 
     /**

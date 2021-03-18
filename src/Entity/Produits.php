@@ -15,7 +15,7 @@ class Produits
      * @ORM\Id
      * @ORM\Column(type="integer")
      */
-    private $id_plat;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
@@ -55,7 +55,7 @@ class Produits
      */
     public function __construct($id_plat, $nom, $description, $prix, $img_path, $categorie)
     {
-        $this->id_plat = $id_plat;
+        $this->id = $id_plat;
         $this->nom = $nom;
         $this->description = $description;
         $this->prix = $prix;
@@ -81,11 +81,11 @@ class Produits
     }
 
     /**
-     * @param mixed $id_plat
+     * @param mixed $id
      */
-    public function setIdPlat($id_plat): void
+    public function setId($id): void
     {
-        $this->id_plat = $id_plat;
+        $this->id = $id;
     }
 
     /**
@@ -127,9 +127,9 @@ class Produits
     /**
      * @return mixed
      */
-    public function getIdPlat()
+    public function getId()
     {
-        return $this->id_plat;
+        return $this->id;
     }
 
     /**

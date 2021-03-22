@@ -18,14 +18,10 @@ class HomeController extends AbstractController
             $login = true;
         }
 
-        $admin = false;
-        if(isset($_SESSION) && !empty($_SESSION) && $_SESSION["prenom"] == "admin"){
-            $admin = true;
-        }
 
         return $this->render('home/index.html.twig', [
             'login' => $login,
-            'admin' => $admin,
+
         ]);
     }
 

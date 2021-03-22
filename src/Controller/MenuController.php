@@ -23,11 +23,6 @@ class MenuController extends AbstractController
             $login = true;
         }
 
-        $admin = false;
-        if(isset($_SESSION) && !empty($_SESSION) && $_SESSION["prenom"] == "admin"){
-            $admin = true;
-        }
-
         $entityManager = $this->getDoctrine()->getManager();
 
         $query = $entityManager->createQuery(
@@ -42,7 +37,6 @@ class MenuController extends AbstractController
 
         return $this->render('menu/index.html.twig', [
             'login' => $login,
-            'admin' => $admin,
             'id' => $id,
             'produits' => $query->getResult(),
         ]);

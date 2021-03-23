@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\UtilisateursType;
 use App\Entity\Utilisateurs;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,9 +51,13 @@ class SecurityController extends AbstractController
         $login = false;
         $username = null;
         $securityContext = $this->container->get('security.authorization_checker');
-        if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
-            $login = true;
-            $username = $this->get('security.token_storage')->getToken()->getUser()->getPrenom();
+        try {
+            if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
+                $login = true;
+                $username = $this->get('security.token_storage')->getToken()->getUser()->getPrenom();
+            }
+        } catch (Exception $e){
+
         }
 
         $user = new Utilisateurs();

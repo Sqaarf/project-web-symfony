@@ -16,19 +16,15 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(Request $request, UserPasswordEncoderInterface $passwordEncoder, AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-
         $login = false;
-        if(isset($_SESSION) && !empty($_SESSION)){
+        $username = null;
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
             $login = true;
+            $username = $this->get('security.token_storage')->getToken()->getUser()->getPrenom();
         }
-
-
-
-        $user = new Utilisateurs();
-
-        $form = $this->createForm(UtilisateursType::class, $user);
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -38,19 +34,25 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
-
             'login' => $login,
+            'username' => $username,
         ]);
     }
 
     /**
      * @Route("/register", name="app_register")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return Response
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $login = false;
-        if(isset($_SESSION) && !empty($_SESSION)){
+        $username = null;
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
             $login = true;
+            $username = $this->get('security.token_storage')->getToken()->getUser()->getPrenom();
         }
 
         $user = new Utilisateurs();
@@ -71,8 +73,9 @@ class SecurityController extends AbstractController
         }
 
         return $this->render('security/register.html.twig', [
-            'login' => $login,
             'form' => $form->createView(),
+            'login' => $login,
+            'username' => $username,
         ]);
     }
 

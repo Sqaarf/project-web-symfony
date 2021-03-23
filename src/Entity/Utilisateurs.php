@@ -45,6 +45,14 @@ class Utilisateurs implements UserInterface
     private $password;
 
     /**
+     * Utilisateurs constructor.
+     */
+    public function __construct()
+    {
+        $this->roles = array('ROLE_USER');
+    }
+
+    /**
      * @return mixed
      */
     public function getPrenom()
@@ -108,11 +116,8 @@ class Utilisateurs implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        return array_unique($this->roles);
     }
 
     public function setRoles(array $roles): self

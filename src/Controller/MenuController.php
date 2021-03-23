@@ -19,8 +19,11 @@ class MenuController extends AbstractController
     public function index($id): Response
     {
         $login = false;
-        if(isset($_SESSION) && !empty($_SESSION)){
+        $username = null;
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
             $login = true;
+            $username = $this->get('security.token_storage')->getToken()->getUser()->getPrenom();
         }
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -36,9 +39,10 @@ class MenuController extends AbstractController
 
 
         return $this->render('menu/index.html.twig', [
-            'login' => $login,
             'id' => $id,
             'produits' => $query->getResult(),
+            'login' => $login,
+            'username' => $username,
         ]);
     }
 }

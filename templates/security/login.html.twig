@@ -3,7 +3,6 @@
 {% block title %}Log in!{% endblock %}
 
 {% block main %}
-    <!--
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -40,22 +39,22 @@
         Sign in
     </button>
 </form>
-
-<div id="flex-container" style="position: absolute;top:30%;left: 37%;">
-    <div class="form-container">
-        <h2>Connectez vous à votre compte :</h2>
-        <form method="POST">
-            <label for="email">Email : </label>
-            <input type="text" name="email">
-            <br>
-            <label f
-                   or="mdp">Mot de passe :</label>
-            <input type="password" name="mdp">
-            <input class="bouton" type="submit" value="Confirmer">
-            <br>
-            <a href="./register.php">Vous n'avez pas de compte ? Cliquez ici !</a>
-        </form>
+    <!--
+    <div id="flex-container" style="position: absolute;top:30%;left: 37%;">
+        <div class="form-container">
+            <h2>Connectez vous à votre compte :</h2>
+            <form method="POST">
+                <label for="email">Email : </label>
+                <input type="text" name="email">
+                <br>
+                <label f
+                       or="mdp">Mot de passe :</label>
+                <input type="password" name="mdp">
+                <input class="bouton" type="submit" value="Confirmer">
+                <br>
+                <a href="./register.php">Vous n'avez pas de compte ? Cliquez ici !</a>
+            </form>
+        </div>
     </div>
-</div>
-    -->
+        -->
 {% endblock %}

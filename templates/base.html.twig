@@ -18,10 +18,10 @@
                             <ul>
                                 <li><a href="/">Accueil</a></li>
                                 <li><a href="#">Panier</a></li>
-                                <li><a href="#">Connexion</a></li>
+                                <li><a href="/login">Connexion</a></li>
                                 {% if login %}
-                                    <li><span>Bonjour Test</span></li>
-                                    <li><a href="#">Déconnexion</a></li>
+                                    <li><span>Bonjour {{ username }}</span></li>
+                                    <li><a href="/logout">Déconnexion</a></li>
                                 {% endif %}
 
                             </ul>

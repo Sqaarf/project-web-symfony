@@ -14,13 +14,16 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         $login = false;
-        if(isset($_SESSION) && !empty($_SESSION)){
+        $username = null;
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
             $login = true;
+            $username = $this->get('security.token_storage')->getToken()->getUser()->getPrenom();
         }
-
 
         return $this->render('home/index.html.twig', [
             'login' => $login,
+            'username' => $username,
 
         ]);
     }

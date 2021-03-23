@@ -14,6 +14,7 @@ class Produits
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
      */
     private $id;
 
@@ -44,25 +45,6 @@ class Produits
      */
     private $id_cat;
 
-    /**
-     * Produits constructor.
-     * @param $id_plat
-     * @param $nom
-     * @param $description
-     * @param $prix
-     * @param $img_path
-     * @param $categorie
-     */
-    public function __construct($id_plat, $nom, $description, $prix, $img_path, $categorie)
-    {
-        $this->id = $id_plat;
-        $this->nom = $nom;
-        $this->description = $description;
-        $this->prix = $prix;
-        $this->img_path = $img_path;
-        $this->id_cat = $categorie;
-
-    }
 
     /**
      * @return mixed
@@ -164,6 +146,8 @@ class Produits
     {
         return $this->img_path;
     }
+
+
 
 
 

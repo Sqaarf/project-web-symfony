@@ -47,26 +47,6 @@ class Commandes
      */
     private $prix;
 
-    /**
-     * Commandes constructor.
-     * @param $id_com
-     * @param $id_plat
-     * @param $nom_article
-     * @param $id_client
-     * @param $nom_client
-     * @param $date
-     * @param $prix
-     */
-    public function __construct($id_com, $id_plat, $nom_article, $id_client, $nom_client, $date, $prix)
-    {
-        $this->id_com = $id_com;
-        $this->id_plat = $id_plat;
-        $this->nom_plat = $nom_article;
-        $this->id_client = $id_client;
-        $this->nom_client = $nom_client;
-        $this->date = $date;
-        $this->prix = $prix;
-    }
 
     /**
      * @return mixed
